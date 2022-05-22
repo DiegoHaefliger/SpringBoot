@@ -3,11 +3,23 @@ package com.haefliger.estoque.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Users")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String emial;
 	private String phone;
 	private String password;
 
@@ -15,10 +27,11 @@ public class User implements Serializable {
 
 	}
 
-	public User(Long id, String name, String phone, String password) {
+	public User(Long id, String name, String emial, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.emial = emial;
 		this.phone = phone;
 		this.password = password;
 	}
@@ -53,6 +66,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmial() {
+		return emial;
+	}
+
+	public void setEmial(String emial) {
+		this.emial = emial;
 	}
 
 	@Override
